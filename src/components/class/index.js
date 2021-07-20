@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./gobang.css";
+import "./index.css";
 export class Gobang extends Component {
   constructor(props) {
     super(props);

@@ -1,11 +1,13 @@
 import './App.css';
-import Gobang from './components/gobang'
+import GobangClass from './components/class'
+import GobangHook from './components/class'
 
 
 function App() {
   return (
     <div className="App">
-      <Gobang></Gobang>
+      <GobangClass/>
+      <GobangHook/>
     </div>
   );
 }
