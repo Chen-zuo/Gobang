@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
-export class Gobang extends Component {
+export class GobangClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -178,4 +178,4 @@ export class Gobang extends Component {
   }
 }
 
-export default Gobang;
+export default GobangClass;
