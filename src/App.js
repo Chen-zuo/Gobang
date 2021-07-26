@@ -1,19 +1,30 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GobangClass from './components/class'
 import GobangHook from './components/hook'
 
 
 function App() {
-  const [turn, setTurn] = useState(true)
+  const [type, setTurn] = useState('class')
+  useEffect(() => {
+    let type = localStorage.getItem("__type__")
+    if(type){ setTurn(type) }
+  }, [])
+
+  let changeType= (type) =>{
+    type = type === 'class' ? 'hook' : 'class' 
+    setTurn(type)
+    localStorage.setItem("__type__", type)
+  }
+
   return (
     <div className="App">
       <div className="change">
-        <button  onClick={() => {setTurn((turn)=>!turn)}}>切换组件类型</button>
-        <p>当前为: {turn ? 'Class组件' : 'Hook组件'}</p>
+        <button onClick={() => changeType(type)}>切换组件类型</button>
+        <p>当前为: {type === 'class' ? 'Class组件' : 'Hook组件'}</p>
       </div>
       
-      { turn ? <GobangClass/> : <GobangHook/> }  
+      { type === 'class' ? <GobangClass/> : <GobangHook/> }  
     </div>
   );
 }
