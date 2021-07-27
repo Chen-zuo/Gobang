@@ -4,8 +4,6 @@ export default () => {
  
   const [palyArr, setpalyArr] = useState([])
   const [chess, setChess] = useState(null)
-  const [row, setRow] = useState(0)
-  const [col, setCol] = useState(0)
   const [hasWinner, setHasWinner] = useState(null)
 
   const [chessArr, setChessArr] = useState(() => {
@@ -29,8 +27,6 @@ export default () => {
     let newChess = chess === 1 ? 2 : 1;
     let newPalyArr = [...palyArr, { row, col, chess:newChess }]
     setChess(newChess)
-    setRow(row)
-    setCol(col)
     setpalyArr(newPalyArr)
     getWinner(newPalyArr, newChess, chessArr, row, col)
   }
