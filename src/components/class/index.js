@@ -12,7 +12,6 @@ export class GobangClass extends Component {
       chess: null, //当前棋子颜色1:黑 2:白,
       row: 0, //当前点击的横坐标
       col: 0, //当前点击的纵坐标
-      hasWinner: null, //是否决出胜利者
     };
   }
 
@@ -28,19 +27,7 @@ export class GobangClass extends Component {
 
   // 下棋
   play = (row, col) => {
-    let { palyArr, chess, hasWinner } = this.state;
-    if (hasWinner) {
-      setTimeout(() => {
-        let r = window.confirm(
-          "Winner:  " +
-            `${hasWinner == 1 ? "黑棋" : "白棋"}` +
-            "\n" +
-            "是否再来一把？"
-        );
-        if (r) window.location.reload();
-      }, 0);
-      return;
-    }
+    let { palyArr, chess } = this.state;
     chess = chess === 1 ? 2 : 1;
     this.setState(
       {
@@ -75,7 +62,6 @@ export class GobangClass extends Component {
         if (r) window.location.reload();
       }, 0);
       colCount = 0;
-      this.setState({ hasWinner: chess });
       return;
     }
     // 左右
@@ -95,7 +81,6 @@ export class GobangClass extends Component {
         if (r) window.location.reload();
       }, 0);
       rowCount = 0;
-      this.setState({ hasWinner: chess });
       return;
     }
     // 左斜
@@ -115,7 +100,6 @@ export class GobangClass extends Component {
         if (r) window.location.reload();
       }, 0);
       leftObliqueCount = 0;
-      this.setState({ hasWinner: chess });
       return;
     }
     // 右斜
@@ -135,7 +119,6 @@ export class GobangClass extends Component {
         if (r) window.location.reload();
       }, 0);
       rightObliqueCount = 0;
-      this.setState({ hasWinner: chess });
       return;
     }
 
